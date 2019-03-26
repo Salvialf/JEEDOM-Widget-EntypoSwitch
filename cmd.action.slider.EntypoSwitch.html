@@ -1,0 +1,103 @@
+<!-- ** Forked from https://codepen.io/beben-koben/pen/Jsfqu ** -->
+<div style="width:125px;height:50px;" class="cmd reportModeHidden cmd-widget" data-type="action" data-subtype="slider" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#">
+ <center><span class="cmdName" style="font-family:system-ui;font-weight:bold;font-size:12px;#hideCmdName#">#name_display#</span>
+  <input class="Toggle#uid#" type="checkbox" id="check#id#">
+  <label for="check#id#" class="loadcheck#id#" id="loadcheck#id#">
+  <span class="entypo-cancel">&#10008;</span>
+  <span class="load"></span>
+  <span class="load"></span>
+  <span class="load"></span>
+  <span class="load"></span>
+  <span class="entypo-check">&#10004;</span>
+  </label></center>
+<script>
+ $('.Toggle#id#').empty();
+if ('#state#' == '0' || '#state#' == 0 || '#state#' == '') {
+                 $('.Toggle#uid#').prop('checked', false);
+        }else {
+               $('.Toggle#uid#').prop('checked', true);
+          }
+             
+      $('.Toggle#uid#').on('click', function() {
+             if ( $('.Toggle#uid#').is( ":checked" ) ){
+                jeedom.cmd.execute({id: '#id#', value: ('1')});
+            } else {
+                jeedom.cmd.execute({id: '#id#', value: ('0')});
+          }
+        });
+    </script>
+  
+  <style>
+/* entypo */
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+}
+input[class=Toggle#uid#]{
+height: 0;
+width: 0;
+visibility: hidden;
+}
+.loadcheck#id# {
+  width:105px;
+  height:40px;
+  font-size:25px;
+  position:absolute;
+  left:0;
+  right:0;
+  margin:5px auto;
+}
+.loadcheck#id# span {float:left;}
+.load {
+  display:block;
+  width:7px;
+  height:7px;
+  margin:20px 2px;
+  border-radius:10px;
+  transition:.5s;
+  cursor:pointer;
+}
+.load:nth-child(2){
+  background:#db1536;
+}
+.load:nth-child(3){
+  background:rgba(219, 21, 54,.7);
+}
+.load:nth-child(4){
+  background:rgba(219, 21, 54,.5);
+}
+.load:nth-child(5){
+  background:rgba(219, 21, 54,.3);
+}
+span[class*="entypo"]{cursor:pointer;}
+span[class*="cancel"]{
+  font-size:35px;
+  color:#db1536;
+  transition:.5s;
+  transition-delay:.1s;
+}
+span[class*="check"]{
+  font-size:35px;
+  color:rgba(0,0,0,.1);
+  transition:.5s;
+  transition-delay:.1s;
+}
+#check#id#:checked + .loadcheck#id# .entypo-check{
+  color:#58d37b;
+}
+#check#id#:checked + .loadcheck#id# .entypo-cancel{
+  color:rgba(0,0,0,.1);
+}
+#check#id#:checked + .loadcheck#id# .load:nth-child(2){
+  background:rgba(88, 211, 123,.3);
+}
+#check#id#:checked + .loadcheck#id# .load:nth-child(3){
+  background:rgba(88, 211, 123,.5);
+}
+#check#id#:checked + .loadcheck#id# .load:nth-child(4){
+  background:rgba(88, 211, 123,.7);
+}
+#check#id#:checked + .loadcheck#id# .load:nth-child(5){
+  background:#58d37b;
+}
+      </style>
+  </div>
